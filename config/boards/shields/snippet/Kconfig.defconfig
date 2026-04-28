@@ -1,0 +1,4 @@
+if SHIELD_SNIPPET
+
+config ZMK_KEYBOARD_NAME
+    default "snippet"
