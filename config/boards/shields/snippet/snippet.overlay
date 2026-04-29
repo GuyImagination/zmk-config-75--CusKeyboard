@@ -1,19 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
-&spi0 {
-    status = "okay";
-    cs-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
-    shifter: 595@0 {
-        compatible = "zmk,gpio-595";
-        status = "okay";
-        gpio-controller;
-        spi-max-frequency = <200000>;
-        reg = <0>;
-        #gpio-cells = <2>;
-        ngpios = <8>;
-    };
-};
-
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -28,6 +14,20 @@
                     <NRF_PSEL(SPIM_SCK, 1, 7)>;
             low-power-enable;
         };
+    };
+};
+
+&spi0 {
+    status = "okay";
+    cs-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
+    shifter: 595@0 {
+        compatible = "zmk,gpio-595";
+        status = "okay";
+        gpio-controller;
+        spi-max-frequency = <200000>;
+        reg = <0>;
+        #gpio-cells = <2>;
+        ngpios = <8>;
     };
 };
 
