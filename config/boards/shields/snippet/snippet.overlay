@@ -14,13 +14,13 @@
             low-power-enable;
         };
     };
-    i2c0_default: i2c0_default {
+    i2c1_default: i2c1_default {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                     <NRF_PSEL(TWIM_SCL, 0, 20)>;
         };
     };
-    i2c0_sleep: i2c0_sleep {
+    i2c1_sleep: i2c1_sleep {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                     <NRF_PSEL(TWIM_SCL, 0, 20)>;
@@ -47,10 +47,10 @@
     };
 };
 
-&i2c0 {
+&i2c1 {                              /* changed from i2c0 */
     status = "okay";
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-0 = <&i2c1_default>;     /* changed */
+    pinctrl-1 = <&i2c1_sleep>;       /* changed */
     pinctrl-names = "default", "sleep";
 
     oled: ssd1306@3c {
