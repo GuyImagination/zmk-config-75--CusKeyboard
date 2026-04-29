@@ -16,8 +16,9 @@
                 &kp LSHFT &kp Z    &kp X    &kp C    &kp V     &kp B     &kp N     &kp M     &kp COMMA &kp DOT  &kp FSLH  &kp RSHFT &mo 2     &trans
                 &kp LCTRL &kp LGUI &kp LALT                    &kp SPACE &kp RALT  &kp RCTRL &kp LEFT  &kp DOWN &kp UP    &kp RIGHT &mo 1     &kp N3
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        
     };
 };
