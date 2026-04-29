@@ -3,15 +3,15 @@
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 1, 7)>,  /* choose your MOSI pin */
-                    <NRF_PSEL(SPIM_SCK, 1, 7)>;   /* choose your CLK pin  */
+            psels = <NRF_PSEL(SPIM_MOSI, 1, 7)>,   /* DS   - P1.07 */
+                    <NRF_PSEL(SPIM_SCK,  1, 1)>;    /* SHCP - P1.01 */
         };
     };
 
     spi0_sleep: spi0_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 1, 7)>,
-                    <NRF_PSEL(SPIM_SCK, 1, 7)>;
+                    <NRF_PSEL(SPIM_SCK,  1, 1)>;
             low-power-enable;
         };
     };
@@ -19,7 +19,11 @@
 
 &spi0 {
     status = "okay";
-    cs-gpios = <&gpio1 7 GPIO_ACTIVE_LOW>;
+    pinctrl-0 = <&spi0_default>;
+    pinctrl-1 = <&spi0_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&gpio1 2 GPIO_ACTIVE_LOW>;          /* STCP - P1.02 */
+
     shifter: 595@0 {
         compatible = "zmk,gpio-595";
         status = "okay";
